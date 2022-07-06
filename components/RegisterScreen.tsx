@@ -1,5 +1,8 @@
 import React from 'react';
-import { Image, ImageBackground, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Image, StyleSheet, Text, TextInput, View } from 'react-native';
+import PickerExt from './PickerExt';
+
+import TextInputExt from './TextInputExt';
 
 
 const RegisterScreen = () => {
@@ -7,28 +10,30 @@ const RegisterScreen = () => {
   const [mail, setMail] = React.useState('');
   const [password, setPassword] = React.useState('');
   return (
-    <ImageBackground source={require("../assets/gym-background.jpeg")} style={styles.background}>
+    <View style={styles.background}>
       <Image source={require('../assets/logo-red.png')} style={styles.logo} />
       <View style={styles.registerEntryBlock}>
         <Text style={styles.mainHeader}>Sign Up</Text>
-        <TextInput onChangeText={setName} value={name} style={styles.input} editable/>
-        <TextInput onChangeText={setMail} value={mail} style={styles.input}/>
-        <TextInput onChangeText={setPassword} value={password} style={styles.input}/>
+        <TextInputExt placeholder='Name' icon='person'/>
+        <PickerExt placeholder='Age' icon='cake'/>
+        <TextInputExt placeholder='Email' icon='email'/>
+        <TextInputExt placeholder='Password' icon='lock'/>
       </View>
-    </ImageBackground>
+    </View>
   )
 }
 
 const styles = StyleSheet.create({
   mainHeader: {
-    color: "white",
+    color: "black",
     fontSize: 22,
     alignSelf: "center"
   },
   background: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    backgroundColor: "#f8f4f4"
   },
   logo: {
     width: 100,
@@ -46,8 +51,8 @@ const styles = StyleSheet.create({
     margin: 12,
     borderWidth: 1,
     padding: 10,
-    borderColor: "white",
-    color: "white"
+    borderColor: "black",
+    color: "black"
   }, 
 })
 
