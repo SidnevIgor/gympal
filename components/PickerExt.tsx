@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Button, FlatList, InteractionManager, Modal, Platform, StatusBar, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
+import { Button, FlatList, Modal, Platform, StatusBar, StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import colors from '../lib/colors/colors';
 
-const PickerExt = (props: {icon?: string, placeholder?: string}) => {
+const PickerExt = (props: {icon?: string, placeholder?: string, items: Array<{label: string, value: string}>, onSelectItem: any, pickedItem: any}) => {
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
@@ -12,20 +12,23 @@ const PickerExt = (props: {icon?: string, placeholder?: string}) => {
       <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
         <View style={styles.container}>
           {props.icon && <Icon name={props.icon} size={30} color={colors.medium} style={styles.icon}></Icon>}
-          <Text style={styles.textInput}>{props.placeholder}</Text>
+          <Text style={styles.textInput}>{props.pickedItem ? props.pickedItem.label : props.placeholder}</Text>
         </View>
       </TouchableWithoutFeedback>
       <Modal visible={modalVisible} animationType="slide">
         <View style={styles.modalWrapper}>
           <Button title='Close' onPress={() => setModalVisible(false)}></Button>
           <FlatList
-            data={[{label: "One", value: 1}, {label: "Two", value: 2}, {label: "Three", value: 3}]}
+            data={props.items}
             keyExtractor={item => item.value.toString()}
             renderItem={(item) => {
               return (
-                <View>
-                  <Text>{item.item.label}</Text>
-                </View>
+                <TouchableOpacity onPress={() =>{
+                  setModalVisible(false);
+                  props.onSelectItem(item.item);
+                }}>
+                  <Text style={styles.modalText}>{item.item.label}</Text>
+                </TouchableOpacity>
               )
             }}
           />
@@ -54,6 +57,9 @@ const styles = StyleSheet.create({
   },
   modalWrapper: {
     paddingTop: Platform.OS === 'ios' ? 50 : StatusBar.currentHeight,
+  },
+  modalText: {
+    padding: 15
   }
 })
 
