@@ -4,28 +4,28 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import colors from '../lib/colors/colors';
 
-const PickerExt = (props: {icon?: string, placeholder?: string, items: Array<{label: string, value: string}>, onSelectItem: any, pickedItem: any}) => {
+const PickerExt = ({icon, placeholder, items, onSelectItem, pickedItem, ...props}) => {
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <React.Fragment>
       <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
         <View style={styles.container}>
-          {props.icon && <Icon name={props.icon} size={30} color={colors.medium} style={styles.icon}></Icon>}
-          <Text style={styles.textInput}>{props.pickedItem ? props.pickedItem.label : props.placeholder}</Text>
+          {icon && <Icon name={icon} size={30} color={colors.medium} style={styles.icon}></Icon>}
+          <Text style={styles.textInput} {...props}>{pickedItem ? pickedItem.label : placeholder}</Text>
         </View>
       </TouchableWithoutFeedback>
       <Modal visible={modalVisible} animationType="slide">
         <View style={styles.modalWrapper}>
           <Button title='Close' onPress={() => setModalVisible(false)}></Button>
           <FlatList
-            data={props.items}
+            data={items}
             keyExtractor={item => item.value.toString()}
             renderItem={(item) => {
               return (
                 <TouchableOpacity onPress={() =>{
                   setModalVisible(false);
-                  props.onSelectItem(item.item);
+                  onSelectItem(item.item);
                 }}>
                   <Text style={styles.modalText}>{item.item.label}</Text>
                 </TouchableOpacity>

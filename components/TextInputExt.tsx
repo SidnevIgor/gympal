@@ -4,11 +4,11 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import colors from '../lib/colors/colors';
 
-const TextInputExt = (props: {icon?: string, placeholder?: string}) => {
+const TextInputExt = ({icon, placeholder, ...props}) => {
   return (
     <View style={styles.container}>
-      {props.icon && <Icon name={props.icon} size={30} color={colors.medium} style={styles.icon}></Icon>}
-      <TextInput style={styles.textInput} placeholder={props.placeholder}/>
+      {icon && <Icon name={icon} size={30} color={colors.medium} style={styles.icon}></Icon>}
+      <TextInput style={styles.textInput} placeholder={placeholder} {...props}/>
     </View>
   )
 }
@@ -28,7 +28,8 @@ const styles = StyleSheet.create({
   },
   textInput: {
     fontSize: 18,
-    fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir"
+    fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
+    width: "80%"
   }
 })
 

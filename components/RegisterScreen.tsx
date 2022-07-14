@@ -1,9 +1,20 @@
 import React from 'react';
-import { Image, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
+
+import colors from '../lib/colors/colors';
+import ButtonExt from './ButtonExt';
 import PickerExt from './PickerExt';
-
 import TextInputExt from './TextInputExt';
+import ErrorMessage from './ErrorMessage';
 
+const validationSchema = Yup.object().shape({
+  name: Yup.string().required().label("Name"),
+  mail: Yup.string().required().email().label("Email"),
+  age: Yup.number().label("Age"),
+  password: Yup.string().required().min(4).label("Password")
+})
 
 const RegisterScreen = () => {
   const getAgeVals = () => {
@@ -15,9 +26,6 @@ const RegisterScreen = () => {
     return ageVals;
   }
 
-  const [name, setName] = React.useState('');
-  const [mail, setMail] = React.useState('');
-  const [password, setPassword] = React.useState('');
   const [age, setAge] = React.useState(getAgeVals());
   let [pickedAge, setPickedAge] = React.useState();
 
@@ -25,17 +33,59 @@ const RegisterScreen = () => {
     <View style={styles.background}>
       <Image source={require('../assets/logo-red.png')} style={styles.logo} />
       <View style={styles.registerEntryBlock}>
-        <Text style={styles.mainHeader}>Sign Up</Text>
-        <TextInputExt placeholder='Name' icon='person'/>
-        <PickerExt 
-          placeholder='Age' 
-          icon='apps' 
-          items={age} 
-          pickedItem={pickedAge}
-          onSelectItem={(item) => setPickedAge(item)}
-        />
-        <TextInputExt placeholder='Email' icon='email'/>
-        <TextInputExt placeholder='Password' icon='lock'/>
+        <Formik
+          initialValues={{name: "", mail: "", age: "", password: ""}}
+          onSubmit={(values) => console.log("Form submitted with vals: ", values)}
+          validationSchema={validationSchema}
+        >
+          {({handleChange, handleSubmit, setFieldTouched, errors, touched}) => (
+            <>
+              <TextInputExt 
+                placeholder='Name' 
+                icon='person'
+                onChangeText={handleChange("name")}
+                onBlur={() => setFieldTouched("name")}
+              />
+              {touched.name && <ErrorMessage error={errors.name} />}
+              <PickerExt 
+                placeholder='Age' 
+                icon='event' 
+                items={age} 
+                pickedItem={pickedAge}
+                onSelectItem={(item) => setPickedAge(item)}
+                onChangeText={handleChange("age")}
+              />
+              <TextInputExt 
+                placeholder='Email' 
+                icon='email' 
+                autoCapitalize='none'
+                textContentType="emailAddress"
+                keyboardType="email-address"
+                onChangeText={handleChange("mail")}
+                onBlur={() =>setFieldTouched("mail") }
+              />
+              {touched.mail && <ErrorMessage error={errors.mail} />}
+              <TextInputExt 
+                placeholder='Password' 
+                icon='lock'
+                autoCapitalize='none'
+                autoCorrect={false}
+                textContentType="password"
+                secureTextEntry
+                onChangeText={handleChange("password")}
+                onBlur={() =>setFieldTouched("password") }
+              />
+              {touched.password && <ErrorMessage error={errors.password} />}
+              <ButtonExt 
+                btnClick={handleSubmit} 
+                txt="Sign Up" 
+                bgColor={colors.primary} 
+                hght={50}
+                wdth="98%" 
+                txtColor={colors.light}/>
+            </>
+          )}
+        </Formik>
       </View>
     </View>
   )
