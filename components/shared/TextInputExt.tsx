@@ -2,7 +2,7 @@ import React from 'react';
 import { Platform, StyleSheet, TextInput, View } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import colors from '../lib/colors/colors';
+import colors from '../../lib/colors/colors';
 
 const TextInputExt = ({icon, placeholder, ...props}) => {
   return (

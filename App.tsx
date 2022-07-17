@@ -3,7 +3,7 @@ import {
   View,
 } from 'react-native';
 import WelcomeScreen from './components/WelcomeScreen';
-import RegisterScreen from './components/RegisterScreen';
+import RegisterScreen from './components/forms/Register/RegisterScreen';
 import ExercisesScreen from './components/ExercisesScreen';
 import ExerciseDetails from './components/ExerciseDetails';
 import AccountScreen from './components/AccountScreen';

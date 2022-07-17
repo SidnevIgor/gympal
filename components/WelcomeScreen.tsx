@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, ImageBackground, StyleSheet, View } from 'react-native';
 
-import ButtonExt from './ButtonExt';
+import ButtonExt from './shared/ButtonExt';
 
 const goToLogin = () => {
   console.log("Login clicked");

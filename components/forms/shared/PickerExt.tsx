@@ -3,7 +3,7 @@ import { Button, FlatList, Modal, Platform, StatusBar, StyleSheet, Text, Touchab
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { FormikContextType, useFormikContext } from 'formik';
 
-import colors from '../lib/colors/colors';
+import colors from '../../../lib/colors/colors';
 
 const PickerExt = ({icon, placeholder, items}) => {
   const [modalVisible, setModalVisible] = useState(false);

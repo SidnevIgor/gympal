@@ -1,13 +1,13 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
-import colors from '../lib/colors/colors';
-import ButtonExt from './ButtonExt';
-import PickerExt from './PickerExt';
-import TextInputExt from './TextInputExt';
-import ErrorMessage from './ErrorMessage';
+import colors from '../../../lib/colors/colors';
+import ButtonExt from '../../shared/ButtonExt';
+import PickerExt from '../shared/PickerExt';
+import TextInputExt from '../../shared/TextInputExt';
+import ErrorMessage from '../shared/ErrorMessage';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required().label("Name"),
@@ -27,11 +27,10 @@ const RegisterScreen = () => {
   }
 
   const [age, setAge] = React.useState(getAgeVals());
-  //let [pickedAge, setPickedAge] = React.useState();
 
   return (
     <View style={styles.background}>
-      <Image source={require('../assets/logo-red.png')} style={styles.logo} />
+      <Image source={require('../../../assets/logo-red.png')} style={styles.logo} />
       <View style={styles.registerEntryBlock}>
         <Formik
           initialValues={{name: "", mail: "", age: "", password: ""}}
