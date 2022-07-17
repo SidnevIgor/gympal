@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import { Button, FlatList, Modal, Platform, StatusBar, StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { FormikContextType, useFormikContext } from 'formik';
 
 import colors from '../lib/colors/colors';
 
-const PickerExt = ({icon, placeholder, items, onSelectItem, pickedItem, ...props}) => {
+const PickerExt = ({icon, placeholder, items}) => {
   const [modalVisible, setModalVisible] = useState(false);
+  const formikContext: FormikContextType<any>  = useFormikContext();
 
   return (
     <React.Fragment>
       <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
         <View style={styles.container}>
           {icon && <Icon name={icon} size={30} color={colors.medium} style={styles.icon}></Icon>}
-          <Text style={styles.textInput} {...props}>{pickedItem ? pickedItem.label : placeholder}</Text>
+          <Text style={styles.textInput}>{formikContext.values.age ? formikContext.values.age : placeholder}</Text>
         </View>
       </TouchableWithoutFeedback>
       <Modal visible={modalVisible} animationType="slide">
@@ -25,7 +27,7 @@ const PickerExt = ({icon, placeholder, items, onSelectItem, pickedItem, ...props
               return (
                 <TouchableOpacity onPress={() =>{
                   setModalVisible(false);
-                  onSelectItem(item.item);
+                  formikContext.setFieldValue("age", item.item.value);
                 }}>
                   <Text style={styles.modalText}>{item.item.label}</Text>
                 </TouchableOpacity>

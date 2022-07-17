@@ -27,7 +27,7 @@ const RegisterScreen = () => {
   }
 
   const [age, setAge] = React.useState(getAgeVals());
-  let [pickedAge, setPickedAge] = React.useState();
+  //let [pickedAge, setPickedAge] = React.useState();
 
   return (
     <View style={styles.background}>
@@ -50,10 +50,7 @@ const RegisterScreen = () => {
               <PickerExt 
                 placeholder='Age' 
                 icon='event' 
-                items={age} 
-                pickedItem={pickedAge}
-                onSelectItem={(item) => setPickedAge(item)}
-                onChangeText={handleChange("age")}
+                items={age}
               />
               <TextInputExt 
                 placeholder='Email' 
