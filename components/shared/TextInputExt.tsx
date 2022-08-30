@@ -8,7 +8,7 @@ const TextInputExt = ({icon, placeholder, ...props}) => {
   return (
     <View style={styles.container}>
       {icon && <Icon name={icon} size={30} color={colors.medium} style={styles.icon}></Icon>}
-      <TextInput style={styles.textInput} placeholder={placeholder} {...props}/>
+      <TextInput style={styles.textInput} placeholder={placeholder} placeholderTextColor={colors.placeholder} {...props}/>
     </View>
   )
 }

@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 
 import colors from '../../../lib/colors/colors';
 import ButtonExt from '../../shared/ButtonExt';
-import PickerExt from '../shared/PickerExt';
+import PickerExt from '../shared/Picker/PickerExt';
 import TextInputExt from '../../shared/TextInputExt';
 import ErrorMessage from '../shared/ErrorMessage';
 
@@ -50,6 +50,7 @@ const RegisterScreen = () => {
                 placeholder='Age' 
                 icon='event' 
                 items={age}
+                pickerKey="age"
               />
               <TextInputExt 
                 placeholder='Email' 
