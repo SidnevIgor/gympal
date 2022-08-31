@@ -3,7 +3,7 @@ import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 
-const ExerciseCard = (props: {name: string, sets: number, reps: number, onPress, renderRightActions}) => {
+const ExerciseCard = (props: {name: string, sets: number, reps: number, onPress?, renderRightActions?}) => {
   return (
     <GestureHandlerRootView>
       <Swipeable renderRightActions={props.renderRightActions}>

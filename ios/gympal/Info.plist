@@ -55,5 +55,7 @@
 	<array>
 		<string>MaterialIcons.ttf</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Photo Library Access Warning</string>
 </dict>
 </plist>
