@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import { launchImageLibrary } from 'react-native-image-picker';
 
 const ImagePicker = ({ children, onImagePick }) => {
@@ -18,18 +18,16 @@ const ImagePicker = ({ children, onImagePick }) => {
 
   return (
     <View style={styles.imagePickerWrapper}>
-      <TouchableOpacity onPress={ () => openImagePicker()}>
+      <TouchableWithoutFeedback onPress={ () => openImagePicker()}>
         {children}
-      </TouchableOpacity>
+      </TouchableWithoutFeedback>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   imagePickerWrapper: {
-    borderStyle: "solid",
-    borderColor: "red",
-    borderWidth: 1
+    
   }
 })
 

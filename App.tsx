@@ -1,8 +1,6 @@
 import React from 'react';
 import {
-  Button,
-  SafeAreaView,
-  Text
+  SafeAreaView
 } from 'react-native';
 import WelcomeScreen from './components/WelcomeScreen';
 import RegisterScreen from './components/forms/Register/RegisterScreen';
@@ -10,6 +8,7 @@ import ExercisesScreen from './components/ExercisesScreen';
 import ExerciseDetails from './components/ExerciseDetails';
 import AccountScreen from './components/AccountScreen';
 import ImagePicker from './components/shared/ImagePicker';
+import ImageInput from './components/shared/ImageInput';
 
 const App = () => {
   const onImagePicked = (uri: string) => {
@@ -18,9 +17,7 @@ const App = () => {
 
   return (
     <SafeAreaView style={{flex: 1}}>
-      <ImagePicker onImagePick={onImagePicked}>
-        <Text>Open picker</Text>
-      </ImagePicker>
+      <ImageInput/>
     </SafeAreaView>
   );
 };
