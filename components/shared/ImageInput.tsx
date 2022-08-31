@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Image, StyleSheet, TouchableWithoutFeedback, View} from 'react-native';
+import {Image, StyleSheet, View} from 'react-native';
 import colors from '../../lib/colors/colors';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import ImagePicker from './ImagePicker';
