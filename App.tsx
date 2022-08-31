@@ -1,23 +1,27 @@
 import React from 'react';
 import {
   Button,
-  Text,
-  View,
+  SafeAreaView,
+  Text
 } from 'react-native';
 import WelcomeScreen from './components/WelcomeScreen';
 import RegisterScreen from './components/forms/Register/RegisterScreen';
 import ExercisesScreen from './components/ExercisesScreen';
 import ExerciseDetails from './components/ExerciseDetails';
 import AccountScreen from './components/AccountScreen';
-import ImagePicker from './components/ImagePicker';
+import ImagePicker from './components/shared/ImagePicker';
 
 const App = () => {
+  const onImagePicked = (uri: string) => {
+    console.log("Got the image uri", uri);
+  }
+
   return (
-    <View style={{flex: 1}}>
-      <ImagePicker>
-        <Button title='Open picker' onPress={() => console.log("Button pressed")}></Button>
+    <SafeAreaView style={{flex: 1}}>
+      <ImagePicker onImagePick={onImagePicked}>
+        <Text>Open picker</Text>
       </ImagePicker>
-    </View>
+    </SafeAreaView>
   );
 };
 

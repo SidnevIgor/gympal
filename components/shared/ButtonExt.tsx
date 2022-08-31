@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, Text, TouchableHighlight } from 'react-native';
 
-const ButtonExt = (props: {txt: string, btnClick: Function, bgColor?: string, txtColor?: string, wdth?: string, hght?: number}) => {
+const ButtonExt = (props: {txt: string, btnClick?: Function, bgColor?: string, txtColor?: string, wdth?: string, hght?: number}) => {
   return (
-    <TouchableHighlight onPress={() => {props.btnClick()}}>
+    <TouchableHighlight onPress={() => {props.btnClick? props.btnClick() : null}}>
       <View style={{
       backgroundColor: props.bgColor || '#f8f4f4', 
       display: 'flex', 
