@@ -1,24 +1,18 @@
 import React from 'react';
-import {
-  SafeAreaView
-} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
 import WelcomeScreen from './components/WelcomeScreen';
-import RegisterScreen from './components/forms/Register/RegisterScreen';
-import ExercisesScreen from './components/ExercisesScreen';
-import ExerciseDetails from './components/ExerciseDetails';
-import AccountScreen from './components/AccountScreen';
-import ImagePicker from './components/shared/ImagePicker';
-import ImageInput from './components/shared/ImageInput';
+
+const Stack = createNativeStackNavigator();
 
 const App = () => {
-  const onImagePicked = (uri: string) => {
-    console.log("Got the image uri", uri);
-  }
-
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <ImageInput/>
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Welcome" component={WelcomeScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
