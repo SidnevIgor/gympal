@@ -1,34 +1,65 @@
 import React from 'react';
-import {
-  Image,
-  ImageBackground,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from 'react-native';
+import * as Yup from 'yup';
+import {Formik} from 'formik';
+import {Image, StyleSheet, Text, TextInput, View} from 'react-native';
+import TextInputExt from '../../shared/TextInputExt';
+import ErrorMessage from '../shared/ErrorMessage';
+import colors from '../../../lib/colors/colors';
+import ButtonExt from '../../shared/ButtonExt';
+
+const validationSchema = Yup.object().shape({
+  mail: Yup.string().required().email().label('Email'),
+  password: Yup.string().required().min(4).label('Password'),
+});
 
 const LoginScreen = () => {
-  const [mail, setMail] = React.useState('');
-  const [password, setPassword] = React.useState('');
   return (
-    <ImageBackground
-      source={require('../../../assets/gym-background.jpeg')}
-      style={styles.background}>
+    <View style={styles.background}>
       <Image
         source={require('../../../assets/logo-red.png')}
         style={styles.logo}
       />
       <View style={styles.registerEntryBlock}>
-        <Text style={styles.mainHeader}>Sign Up</Text>
-        <TextInput onChangeText={setMail} value={mail} style={styles.input} />
-        <TextInput
-          onChangeText={setPassword}
-          value={password}
-          style={styles.input}
-        />
+        <Formik
+          initialValues={{mail: '', password: ''}}
+          onSubmit={values => console.log('Form submitted with vals: ', values)}
+          validationSchema={validationSchema}>
+          {({handleChange, handleSubmit, setFieldTouched, errors, touched}) => (
+            <>
+              <TextInputExt
+                placeholder="Email"
+                icon="email"
+                autoCapitalize="none"
+                textContentType="emailAddress"
+                keyboardType="email-address"
+                onChangeText={handleChange('mail')}
+                onBlur={() => setFieldTouched('mail')}
+              />
+              {touched.mail && <ErrorMessage error={errors.mail} />}
+              <TextInputExt
+                placeholder="Password"
+                icon="lock"
+                autoCapitalize="none"
+                autoCorrect={false}
+                textContentType="password"
+                secureTextEntry
+                onChangeText={handleChange('password')}
+                onBlur={() => setFieldTouched('password')}
+              />
+              {touched.password && <ErrorMessage error={errors.password} />}
+              <ButtonExt
+                btnClick={handleSubmit}
+                txt="Login"
+                bgColor={colors.primary}
+                hght={50}
+                wdth="98%"
+                txtColor={colors.light}
+              />
+            </>
+          )}
+        </Formik>
       </View>
-    </ImageBackground>
+    </View>
   );
 };
 
