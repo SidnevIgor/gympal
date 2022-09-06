@@ -13,9 +13,7 @@ const WelcomeScreen = ({navigation}) => {
   };
 
   return (
-    <ImageBackground
-      source={require('../assets/gym-background.jpeg')}
-      style={styles.background}>
+    <View style={styles.background}>
       <Image source={require('../assets/logo-red.png')} style={styles.logo} />
       <View style={styles.loginBtnContainer}>
         <ButtonExt
@@ -35,7 +33,7 @@ const WelcomeScreen = ({navigation}) => {
           bgColor="#88C8C3"
           txtColor="white"></ButtonExt>
       </View>
-    </ImageBackground>
+    </View>
   );
 };
 

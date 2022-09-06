@@ -11,7 +11,13 @@ const Stack = createNativeStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Welcome">
+      <Stack.Navigator
+        initialRouteName="Welcome"
+        screenOptions={{
+          headerTitleAlign: 'center',
+          headerTintColor: 'white',
+          headerStyle: {backgroundColor: 'dodgerblue'},
+        }}>
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />
