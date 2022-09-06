@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, StyleSheet, FlatList, StatusBar, Platform} from 'react-native';
+import {View, StyleSheet, FlatList} from 'react-native';
 
 import ExerciseCard from './ExerciseCard';
 import DeleteComponent from './DeleteComponent';
@@ -69,7 +69,8 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     backgroundColor: '#f8f4f4',
     padding: 20,
-    paddingTop: Platform.OS === 'ios' ? 50 : StatusBar.currentHeight,
+    paddingTop: 5,
+    paddingBottom: 0,
   },
 });
 
