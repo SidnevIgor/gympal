@@ -1,5 +1,11 @@
 import React from 'react';
-import {View, StyleSheet, Text, Image, TouchableOpacity} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Text,
+  Image,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 
@@ -13,7 +19,7 @@ const ExerciseCard = (props: {
   return (
     <GestureHandlerRootView>
       <Swipeable renderRightActions={props.renderRightActions}>
-        <TouchableOpacity onPress={props.onPress}>
+        <TouchableWithoutFeedback onPress={props.onPress}>
           <View style={styles.card}>
             <Image
               source={require('../../assets/logo-red.png')}
@@ -25,7 +31,7 @@ const ExerciseCard = (props: {
               </Text>
             </View>
           </View>
-        </TouchableOpacity>
+        </TouchableWithoutFeedback>
       </Swipeable>
     </GestureHandlerRootView>
   );
