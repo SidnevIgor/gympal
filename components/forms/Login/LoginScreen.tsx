@@ -12,7 +12,7 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required().min(4).label('Password'),
 });
 
-const LoginScreen = () => {
+const LoginScreen = ({navigation}) => {
   return (
     <View style={styles.background}>
       <Image
@@ -22,7 +22,7 @@ const LoginScreen = () => {
       <View style={styles.registerEntryBlock}>
         <Formik
           initialValues={{mail: '', password: ''}}
-          onSubmit={values => console.log('Form submitted with vals: ', values)}
+          onSubmit={values => navigation.navigate('Main')}
           validationSchema={validationSchema}>
           {({handleChange, handleSubmit, setFieldTouched, errors, touched}) => (
             <>
