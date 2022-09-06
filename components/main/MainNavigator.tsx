@@ -8,7 +8,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const Tab = createBottomTabNavigator();
 
-const Main = () => {
+const MainNavigator = () => {
   return (
     <NavigationContainer independent={true}>
       <Tab.Navigator
@@ -44,4 +44,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default MainNavigator;

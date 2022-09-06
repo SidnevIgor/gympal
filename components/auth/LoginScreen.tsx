@@ -2,10 +2,10 @@ import React from 'react';
 import * as Yup from 'yup';
 import {Formik} from 'formik';
 import {Image, StyleSheet, Text, TextInput, View} from 'react-native';
-import TextInputExt from '../../shared/TextInputExt';
-import ErrorMessage from '../shared/ErrorMessage';
-import colors from '../../../lib/colors/colors';
-import ButtonExt from '../../shared/ButtonExt';
+import TextInputExt from '../shared/TextInputExt';
+import ErrorMessage from './shared/ErrorMessage';
+import colors from '../../lib/colors/colors';
+import ButtonExt from '../shared/ButtonExt';
 
 const validationSchema = Yup.object().shape({
   mail: Yup.string().required().email().label('Email'),
@@ -16,7 +16,7 @@ const LoginScreen = ({navigation}) => {
   return (
     <View style={styles.background}>
       <Image
-        source={require('../../../assets/logo-red.png')}
+        source={require('../../assets/logo-red.png')}
         style={styles.logo}
       />
       <View style={styles.registerEntryBlock}>

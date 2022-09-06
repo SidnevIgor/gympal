@@ -3,11 +3,11 @@ import {Image, StyleSheet, View} from 'react-native';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
 
-import colors from '../../../lib/colors/colors';
-import ButtonExt from '../../shared/ButtonExt';
-import PickerExt from '../shared/Picker/PickerExt';
-import TextInputExt from '../../shared/TextInputExt';
-import ErrorMessage from '../shared/ErrorMessage';
+import colors from '../../lib/colors/colors';
+import ButtonExt from '../shared/ButtonExt';
+import PickerExt from './shared/Picker/PickerExt';
+import TextInputExt from '../shared/TextInputExt';
+import ErrorMessage from './shared/ErrorMessage';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required().label('Name'),
@@ -31,7 +31,7 @@ const RegisterScreen = () => {
   return (
     <View style={styles.background}>
       <Image
-        source={require('../../../assets/logo-red.png')}
+        source={require('../../assets/logo-red.png')}
         style={styles.logo}
       />
       <View style={styles.registerEntryBlock}>

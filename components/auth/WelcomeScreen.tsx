@@ -1,7 +1,7 @@
 import React from 'react';
-import {Image, ImageBackground, StyleSheet, View} from 'react-native';
+import {Image, StyleSheet, View} from 'react-native';
 
-import ButtonExt from './shared/ButtonExt';
+import ButtonExt from '../shared/ButtonExt';
 
 const WelcomeScreen = ({navigation}) => {
   const goToLogin = () => {
@@ -14,7 +14,10 @@ const WelcomeScreen = ({navigation}) => {
 
   return (
     <View style={styles.background}>
-      <Image source={require('../assets/logo-red.png')} style={styles.logo} />
+      <Image
+        source={require('../../assets/logo-red.png')}
+        style={styles.logo}
+      />
       <View style={styles.loginBtnContainer}>
         <ButtonExt
           txt="LOGIN"
