@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "272652610055",
+    "project_id": "gympal-581df",
+    "storage_bucket": "gympal-581df.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:272652610055:android:4b9b9da89e2bbb71d7d8a2",
+        "android_client_info": {
+          "package_name": "com.gympal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "272652610055-jpkms8a5vhb7p1t85uv7i3f0ifb5675d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gympal",
+            "certificate_hash": "24cc215989fc12528dcff6c532890712cc14cfee"
+          }
+        },
+        {
+          "client_id": "272652610055-s6sgrscfbhu9eu13htnirkglh1jfeget.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOv6wNCR6COYWatb2w_Qi77G2MRPsANrM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "272652610055-s6sgrscfbhu9eu13htnirkglh1jfeget.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
