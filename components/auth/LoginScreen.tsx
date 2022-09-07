@@ -47,14 +47,16 @@ const LoginScreen = ({navigation}) => {
                 onBlur={() => setFieldTouched('password')}
               />
               {touched.password && <ErrorMessage error={errors.password} />}
-              <ButtonExt
-                btnClick={handleSubmit}
-                txt="Login"
-                bgColor={colors.primary}
-                hght={50}
-                wdth="98%"
-                txtColor={colors.light}
-              />
+              <View style={styles.loginBtn}>
+                <ButtonExt
+                  btnClick={handleSubmit}
+                  txt="Login"
+                  bgColor={colors.primary}
+                  hght={50}
+                  wdth="98%"
+                  txtColor={colors.light}
+                />
+              </View>
             </>
           )}
         </Formik>
@@ -92,6 +94,9 @@ const styles = StyleSheet.create({
     padding: 10,
     borderColor: 'white',
     color: 'white',
+  },
+  loginBtn: {
+    marginTop: 10,
   },
 });
 

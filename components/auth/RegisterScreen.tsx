@@ -75,14 +75,16 @@ const RegisterScreen = () => {
                 onBlur={() => setFieldTouched('password')}
               />
               {touched.password && <ErrorMessage error={errors.password} />}
-              <ButtonExt
-                btnClick={handleSubmit}
-                txt="Sign Up"
-                bgColor={colors.primary}
-                hght={50}
-                wdth="98%"
-                txtColor={colors.light}
-              />
+              <View style={styles.registerBtn}>
+                <ButtonExt
+                  btnClick={handleSubmit}
+                  txt="Sign Up"
+                  bgColor={colors.primary}
+                  hght={50}
+                  wdth="98%"
+                  txtColor={colors.light}
+                />
+              </View>
             </>
           )}
         </Formik>
@@ -99,15 +101,15 @@ const styles = StyleSheet.create({
   },
   background: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     backgroundColor: '#f8f4f4',
   },
   logo: {
     width: 100,
     height: 100,
-    position: 'absolute',
-    top: 100,
+    marginTop: 60,
+    marginBottom: 30,
   },
   registerEntryBlock: {
     width: '100%',
@@ -121,6 +123,9 @@ const styles = StyleSheet.create({
     padding: 10,
     borderColor: 'black',
     color: 'black',
+  },
+  registerBtn: {
+    marginTop: 20,
   },
 });
 
