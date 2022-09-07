@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Image, StyleSheet, View} from 'react-native';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
+import auth from '@react-native-firebase/auth';
 
 import colors from '../../lib/colors/colors';
 import ButtonExt from '../shared/ButtonExt';
@@ -28,6 +29,25 @@ const RegisterScreen = () => {
 
   const [age, setAge] = useState(getAgeVals());
 
+  const handleSignUp = (email: string, password: string) => {
+    console.log('handleSignUp() called');
+    auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(val => {
+        console.log('New user registered -', val);
+      })
+      .catch(err => {
+        if (err.code === 'auth/email-already-in-use') {
+          console.log('That email address is already in use!');
+        }
+
+        if (err.code === 'auth/invalid-email') {
+          console.log('That email address is invalid!');
+        }
+        console.error(err);
+      });
+  };
+
   return (
     <View style={styles.background}>
       <Image
@@ -37,7 +57,7 @@ const RegisterScreen = () => {
       <View style={styles.registerEntryBlock}>
         <Formik
           initialValues={{name: '', mail: '', age: '', password: ''}}
-          onSubmit={values => console.log('Form submitted with vals: ', values)}
+          onSubmit={values => handleSignUp(values.mail, values.password)}
           validationSchema={validationSchema}>
           {({handleChange, handleSubmit, setFieldTouched, errors, touched}) => (
             <>

@@ -1,8 +1,26 @@
 import React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  Text,
+  TouchableWithoutFeedback,
+  View,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import auth from '@react-native-firebase/auth';
 
 const AccountScreen = () => {
+  const onLogoutClick = () => {
+    auth()
+      .signOut()
+      .then(val => {
+        console.log('User is signed out: ', val);
+      })
+      .catch(err => {
+        console.log('Error happened during signout: ', err);
+      });
+  };
+
   return (
     <View style={styles.wrapper}>
       <View style={styles.accountData}>
@@ -29,12 +47,15 @@ const AccountScreen = () => {
           </View>
           <Text style={styles.menuName}>My messages</Text>
         </View>
-        <View style={styles.menuItem}>
-          <View style={{...styles.iconWrapper, backgroundColor: '#ffe66d'}}>
-            <Icon name="logout" size={28} color="#fff" />
+
+        <TouchableWithoutFeedback onPress={() => onLogoutClick()}>
+          <View style={styles.menuItem}>
+            <View style={{...styles.iconWrapper, backgroundColor: '#ffe66d'}}>
+              <Icon name="logout" size={28} color="#fff" />
+            </View>
+            <Text style={styles.menuName}>Log out</Text>
           </View>
-          <Text style={styles.menuName}>Log out</Text>
-        </View>
+        </TouchableWithoutFeedback>
       </View>
     </View>
   );

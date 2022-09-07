@@ -6,6 +6,7 @@ import TextInputExt from '../shared/TextInputExt';
 import ErrorMessage from './shared/ErrorMessage';
 import colors from '../../lib/colors/colors';
 import ButtonExt from '../shared/ButtonExt';
+import auth from '@react-native-firebase/auth';
 
 const validationSchema = Yup.object().shape({
   mail: Yup.string().required().email().label('Email'),
@@ -13,6 +14,18 @@ const validationSchema = Yup.object().shape({
 });
 
 const LoginScreen = ({navigation}) => {
+  const handleSignIn = (email: string, password: string) => {
+    console.log('handleSignIn() called with ', email, password);
+    auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(val => {
+        console.log('Sign In working - ', val);
+      })
+      .catch(err => {
+        console.log('Error happened: ', err);
+      });
+  };
+
   return (
     <View style={styles.background}>
       <Image
@@ -22,7 +35,7 @@ const LoginScreen = ({navigation}) => {
       <View style={styles.registerEntryBlock}>
         <Formik
           initialValues={{mail: '', password: ''}}
-          onSubmit={values => navigation.navigate('Main')}
+          onSubmit={({mail, password}) => handleSignIn(mail, password)}
           validationSchema={validationSchema}>
           {({handleChange, handleSubmit, setFieldTouched, errors, touched}) => (
             <>
