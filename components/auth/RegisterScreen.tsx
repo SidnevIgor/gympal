@@ -123,7 +123,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: '#f8f4f4',
   },
   logo: {
     width: 100,

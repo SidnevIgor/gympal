@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react';
 import AuthNavigation from './components/auth/AuthNavigation';
 import auth from '@react-native-firebase/auth';
 import MainNavigation from './components/main/MainNavigator';
+import navigationTheme from './lib/theme/navigationTheme';
 
 const App = () => {
   const [initializing, setInitializing] = useState(true);
@@ -21,7 +22,7 @@ const App = () => {
   if (initializing) return null;
 
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={navigationTheme}>
       {!user && <AuthNavigation />}
       {user && <MainNavigation />}
     </NavigationContainer>

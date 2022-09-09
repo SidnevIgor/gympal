@@ -1,5 +1,6 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
+import colors from '../../lib/colors/colors';
 import MainNavigation from '../main/MainNavigator';
 import LoginScreen from './LoginScreen';
 import RegisterScreen from './RegisterScreen';
@@ -14,7 +15,7 @@ const AuthNavigation = () => {
       screenOptions={{
         headerTitleAlign: 'center',
         headerTintColor: 'white',
-        headerStyle: {backgroundColor: 'dodgerblue'},
+        headerStyle: {backgroundColor: colors.background},
       }}>
       <Stack.Screen name="Welcome" component={WelcomeScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />

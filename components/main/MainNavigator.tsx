@@ -4,6 +4,7 @@ import AccountScreen from './AccountScreen';
 import ExercisesScreen from './ExercisesScreen';
 import HomeScreen from './HomeScreen';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import colors from '../../lib/colors/colors';
 
 const Tab = createBottomTabNavigator();
 
@@ -12,9 +13,19 @@ const MainNavigation = () => {
     <Tab.Navigator
       initialRouteName="Home"
       screenOptions={{
-        headerTitleAlign: 'center',
+        headerTitleAlign: 'left',
         headerTintColor: 'white',
-        headerStyle: {backgroundColor: 'dodgerblue'},
+        headerStyle: {
+          backgroundColor: colors.background,
+        },
+        tabBarStyle: {
+          backgroundColor: '#12141C',
+          borderTopColor: 'transparent',
+          borderTopLeftRadius: 15,
+          borderTopRightRadius: 15,
+          padding: 15,
+        },
+        tabBarShowLabel: false,
       }}>
       <Tab.Screen
         name="Home"
@@ -23,6 +34,7 @@ const MainNavigation = () => {
           tabBarIcon: ({color, size}) => (
             <Icon name="home" size={size} color={color} />
           ),
+          headerTitle: 'Hello, Igor!',
         }}
       />
       <Tab.Screen

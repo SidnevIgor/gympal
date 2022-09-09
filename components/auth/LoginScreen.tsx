@@ -1,7 +1,7 @@
 import React from 'react';
 import * as Yup from 'yup';
 import {Formik} from 'formik';
-import {Image, StyleSheet, Text, TextInput, View} from 'react-native';
+import {Image, StyleSheet, View} from 'react-native';
 import TextInputExt from '../shared/TextInputExt';
 import ErrorMessage from './shared/ErrorMessage';
 import colors from '../../lib/colors/colors';
