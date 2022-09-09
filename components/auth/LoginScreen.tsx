@@ -6,7 +6,7 @@ import TextInputExt from '../shared/TextInputExt';
 import ErrorMessage from './shared/ErrorMessage';
 import colors from '../../lib/colors/colors';
 import ButtonExt from '../shared/ButtonExt';
-import auth from '@react-native-firebase/auth';
+import {signInEmailAndPassword} from '../../lib/api/auth';
 
 const validationSchema = Yup.object().shape({
   mail: Yup.string().required().email().label('Email'),
@@ -16,8 +16,7 @@ const validationSchema = Yup.object().shape({
 const LoginScreen = ({navigation}) => {
   const handleSignIn = (email: string, password: string) => {
     console.log('handleSignIn() called with ', email, password);
-    auth()
-      .signInWithEmailAndPassword(email, password)
+    signInEmailAndPassword(email, password)
       .then(val => {
         console.log('Sign In working - ', val);
       })

@@ -43,7 +43,7 @@ const MainNavigation = () => {
         component={HomeScreen}
         options={{
           tabBarIcon: ({color, size}) => (
-            <Icon name="home" size={size} color={color} />
+            <Icon name="data-usage" size={size} color={color} />
           ),
           headerTitle: 'Hello, Igor!',
         }}

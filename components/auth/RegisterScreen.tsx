@@ -2,13 +2,14 @@ import React, {useState} from 'react';
 import {Image, StyleSheet, View} from 'react-native';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
-import auth from '@react-native-firebase/auth';
 
+import {signUpEmailAndPassword} from '../../lib/api/auth';
 import colors from '../../lib/colors/colors';
 import ButtonExt from '../shared/ButtonExt';
 import PickerExt from './shared/Picker/PickerExt';
 import TextInputExt from '../shared/TextInputExt';
 import ErrorMessage from './shared/ErrorMessage';
+import User from '../../lib/interfaces/user';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required().label('Name'),
@@ -27,23 +28,14 @@ const RegisterScreen = () => {
     return ageVals;
   };
 
-  const [age, setAge] = useState(getAgeVals());
+  const [age] = useState(getAgeVals());
 
-  const handleSignUp = (email: string, password: string) => {
-    console.log('handleSignUp() called');
-    auth()
-      .createUserWithEmailAndPassword(email, password)
+  const handleSignUp = (user: User) => {
+    signUpEmailAndPassword(user)
       .then(val => {
         console.log('New user registered -', val);
       })
       .catch(err => {
-        if (err.code === 'auth/email-already-in-use') {
-          console.log('That email address is already in use!');
-        }
-
-        if (err.code === 'auth/invalid-email') {
-          console.log('That email address is invalid!');
-        }
         console.error(err);
       });
   };
@@ -57,7 +49,7 @@ const RegisterScreen = () => {
       <View style={styles.registerEntryBlock}>
         <Formik
           initialValues={{name: '', mail: '', age: '', password: ''}}
-          onSubmit={values => handleSignUp(values.mail, values.password)}
+          onSubmit={values => handleSignUp(values)}
           validationSchema={validationSchema}>
           {({handleChange, handleSubmit, setFieldTouched, errors, touched}) => (
             <>
