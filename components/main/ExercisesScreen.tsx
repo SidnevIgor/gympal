@@ -3,6 +3,7 @@ import {View, StyleSheet, FlatList} from 'react-native';
 
 import ExerciseCard from './ExerciseCard';
 import DeleteComponent from './DeleteComponent';
+import colors from '../../lib/colors/colors';
 
 const initExercises = [
   {
@@ -67,7 +68,7 @@ const styles = StyleSheet.create({
     flex: 1,
     display: 'flex',
     justifyContent: 'flex-start',
-    backgroundColor: '#f8f4f4',
+    backgroundColor: colors.background,
     padding: 20,
     paddingTop: 5,
     paddingBottom: 0,

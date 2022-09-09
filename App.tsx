@@ -4,6 +4,8 @@ import AuthNavigation from './components/auth/AuthNavigation';
 import auth from '@react-native-firebase/auth';
 import MainNavigation from './components/main/MainNavigator';
 import navigationTheme from './lib/theme/navigationTheme';
+import {View} from 'react-native';
+import colors from './lib/colors/colors';
 
 const App = () => {
   const [initializing, setInitializing] = useState(true);
@@ -22,10 +24,12 @@ const App = () => {
   if (initializing) return null;
 
   return (
-    <NavigationContainer theme={navigationTheme}>
-      {!user && <AuthNavigation />}
-      {user && <MainNavigation />}
-    </NavigationContainer>
+    <View style={{backgroundColor: colors.background, flex: 1}}>
+      <NavigationContainer theme={navigationTheme}>
+        {!user && <AuthNavigation />}
+        {user && <MainNavigation />}
+      </NavigationContainer>
+    </View>
   );
 };
 

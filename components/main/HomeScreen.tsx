@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import colors from '../../lib/colors/colors';
 
 const HomeScreen = () => {
   return <View style={styles.wrapper}></View>;

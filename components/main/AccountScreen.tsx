@@ -63,7 +63,6 @@ const AccountScreen = () => {
 
 const styles = StyleSheet.create({
   wrapper: {
-    backgroundColor: '#f8f4f4',
     flex: 1,
     justifyContent: 'flex-start',
   },
