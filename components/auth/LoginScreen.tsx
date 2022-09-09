@@ -1,5 +1,4 @@
 import React from 'react';
-import * as Yup from 'yup';
 import {Formik} from 'formik';
 import {Image, StyleSheet, View} from 'react-native';
 import TextInputExt from '../shared/TextInputExt';
@@ -8,10 +7,7 @@ import colors from '../../lib/colors/colors';
 import ButtonExt from '../shared/ButtonExt';
 import {signInEmailAndPassword} from '../../lib/api/auth';
 
-const validationSchema = Yup.object().shape({
-  mail: Yup.string().required().email().label('Email'),
-  password: Yup.string().required().min(4).label('Password'),
-});
+import LoginSchema from './schemas/LoginSchema';
 
 const LoginScreen = ({navigation}) => {
   const handleSignIn = (email: string, password: string) => {
@@ -35,7 +31,7 @@ const LoginScreen = ({navigation}) => {
         <Formik
           initialValues={{mail: '', password: ''}}
           onSubmit={({mail, password}) => handleSignIn(mail, password)}
-          validationSchema={validationSchema}>
+          validationSchema={LoginSchema}>
           {({handleChange, handleSubmit, setFieldTouched, errors, touched}) => (
             <>
               <TextInputExt

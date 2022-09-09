@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {Image, StyleSheet, View} from 'react-native';
 import {Formik} from 'formik';
-import * as Yup from 'yup';
 
 import {signUpEmailAndPassword} from '../../lib/api/auth';
 import colors from '../../lib/colors/colors';
@@ -10,13 +9,7 @@ import PickerExt from './shared/Picker/PickerExt';
 import TextInputExt from '../shared/TextInputExt';
 import ErrorMessage from './shared/ErrorMessage';
 import User from '../../lib/interfaces/user';
-
-const validationSchema = Yup.object().shape({
-  name: Yup.string().required().label('Name'),
-  mail: Yup.string().required().email().label('Email'),
-  age: Yup.number().label('Age'),
-  password: Yup.string().required().min(4).label('Password'),
-});
+import RegisterSchema from './schemas/RegisterSchema';
 
 const RegisterScreen = () => {
   const getAgeVals = () => {
@@ -50,7 +43,7 @@ const RegisterScreen = () => {
         <Formik
           initialValues={{name: '', mail: '', age: '', password: ''}}
           onSubmit={values => handleSignUp(values)}
-          validationSchema={validationSchema}>
+          validationSchema={RegisterSchema}>
           {({handleChange, handleSubmit, setFieldTouched, errors, touched}) => (
             <>
               <TextInputExt
