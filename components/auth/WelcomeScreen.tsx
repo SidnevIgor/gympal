@@ -2,6 +2,7 @@ import React from 'react';
 import {Image, StyleSheet, View} from 'react-native';
 
 import ButtonExt from '../shared/ButtonExt';
+import WelcomeAnimation from './WelcomeAnimation';
 
 const WelcomeScreen = ({navigation}) => {
   const goToLogin = () => {
@@ -14,10 +15,9 @@ const WelcomeScreen = ({navigation}) => {
 
   return (
     <View style={styles.background}>
-      <Image
-        source={require('../../assets/logo-red.png')}
-        style={styles.logo}
-      />
+      <View style={styles.logo}>
+        <WelcomeAnimation />
+      </View>
       <View style={styles.loginBtnContainer}>
         <ButtonExt
           txt="LOGIN"
@@ -47,8 +47,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   logo: {
-    width: 100,
-    height: 100,
     position: 'absolute',
     top: 100,
   },
