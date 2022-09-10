@@ -6,10 +6,12 @@ import MainNavigation from './components/main/MainNavigator';
 import navigationTheme from './lib/theme/navigationTheme';
 import {View} from 'react-native';
 import colors from './lib/colors/colors';
+import LoadingAnimation from './components/shared/LoadingAnimation';
 
 const App = () => {
   const [initializing, setInitializing] = useState(true);
   const [user, setUser] = useState();
+  const [loading, setLoading] = useState(false);
 
   const onAuthStateChanged = user => {
     setUser(user);
@@ -29,6 +31,7 @@ const App = () => {
         {!user && <AuthNavigation />}
         {user && <MainNavigation />}
       </NavigationContainer>
+      <LoadingAnimation loading={loading} />
     </View>
   );
 };
