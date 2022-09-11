@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Formik} from 'formik';
 import {Image, StyleSheet, View} from 'react-native';
 import TextInputExt from '../shared/TextInputExt';
@@ -6,17 +6,23 @@ import ErrorMessage from './shared/ErrorMessage';
 import colors from '../../lib/colors/colors';
 import ButtonExt from '../shared/ButtonExt';
 import {signInEmailAndPassword} from '../../lib/api/auth';
+import {AppContext} from '../../lib/contexts/AppContext';
 
 import LoginSchema from './schemas/LoginSchema';
 
 const LoginScreen = ({navigation}) => {
+  const [, setLoading] = useContext(AppContext);
+
   const handleSignIn = (email: string, password: string) => {
     console.log('handleSignIn() called with ', email, password);
+    setLoading(true);
     signInEmailAndPassword(email, password)
       .then(val => {
+        setLoading(false);
         console.log('Sign In working - ', val);
       })
       .catch(err => {
+        setLoading(false);
         console.log('Error happened: ', err);
       });
   };

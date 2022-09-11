@@ -1,8 +1,11 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Lottie from 'lottie-react-native';
 import {StyleSheet, View} from 'react-native';
+import {AppContext} from '../../lib/contexts/AppContext';
 
-const LoadingAnimation = ({loading}) => {
+const LoadingAnimation = () => {
+  const [loading] = useContext(AppContext);
+
   if (!loading) return null;
 
   return (
