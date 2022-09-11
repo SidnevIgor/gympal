@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {Image, StyleSheet, View} from 'react-native';
 import {Formik} from 'formik';
 
@@ -10,6 +10,7 @@ import TextInputExt from '../shared/TextInputExt';
 import ErrorMessage from './shared/ErrorMessage';
 import User from '../../lib/interfaces/user';
 import RegisterSchema from './schemas/RegisterSchema';
+import {AppContext} from '../../lib/contexts/AppContext';
 
 const RegisterScreen = () => {
   const getAgeVals = () => {
@@ -22,14 +23,18 @@ const RegisterScreen = () => {
   };
 
   const [age] = useState(getAgeVals());
+  const [, setLoading] = useContext(AppContext);
 
   const handleSignUp = (user: User) => {
+    setLoading(true);
     signUpEmailAndPassword(user)
       .then(val => {
         console.log('New user registered -', val);
+        setLoading(false);
       })
       .catch(err => {
         console.error(err);
+        setLoading(false);
       });
   };
 

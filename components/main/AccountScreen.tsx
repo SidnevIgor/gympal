@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {
   Image,
   StyleSheet,
@@ -8,16 +8,22 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import auth from '@react-native-firebase/auth';
+import {AppContext} from '../../lib/contexts/AppContext';
 
 const AccountScreen = () => {
+  const [, setLoading] = useContext(AppContext);
+
   const onLogoutClick = () => {
+    setLoading(true);
     auth()
       .signOut()
       .then(val => {
         console.log('User is signed out: ', val);
+        setLoading(false);
       })
       .catch(err => {
         console.log('Error happened during signout: ', err);
+        setLoading(false);
       });
   };
 
