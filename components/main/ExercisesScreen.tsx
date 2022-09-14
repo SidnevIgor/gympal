@@ -4,6 +4,7 @@ import {View, StyleSheet, FlatList} from 'react-native';
 import ExerciseCard from './ExerciseCard';
 import DeleteComponent from './DeleteComponent';
 import colors from '../../lib/colors/colors';
+import Calendar from './Calendar';
 
 const initExercises = [
   {
@@ -54,6 +55,7 @@ const ExercisesScreen = () => {
 
   return (
     <View style={styles.wrapper}>
+      <Calendar />
       <FlatList
         data={exercises}
         keyExtractor={exercise => exercise.id}

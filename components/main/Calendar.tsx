@@ -14,10 +14,12 @@ const Calendar = () => {
 
   return (
     <View style={styles.wrapper}>
-      <View style={styles.tab}>
-        <Text>{tabs[0].weekDay}</Text>
-        <Text>{tabs[0].weekNum}</Text>
-      </View>
+      {tabs.map((tab, index) => (
+        <View style={styles.tab} key={tab.weekDay + index}>
+          <Text>{tab.weekDay}</Text>
+          <Text>{tab.weekNum}</Text>
+        </View>
+      ))}
     </View>
   );
 };
@@ -26,12 +28,16 @@ const styles = StyleSheet.create({
   wrapper: {
     display: 'flex',
     flexDirection: 'row',
+    margin: 20,
   },
   tab: {
     display: 'flex',
     flexDirection: 'column',
     backgroundColor: 'blue',
     borderRadius: 10,
+    height: 60,
+    width: '15%',
+    marginRight: 10,
   },
 });
 
