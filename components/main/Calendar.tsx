@@ -1,18 +1,32 @@
 import React, {useState} from 'react';
 import {StyleSheet, TouchableWithoutFeedback, View} from 'react-native';
 import colors from '../../lib/colors/colors';
+import CalendarTab from '../../lib/interfaces/CalendarTab';
 import TextExt from '../shared/TextExt';
 
+const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+
 const Calendar = () => {
-  const [tabs, setTabs] = useState([
-    {weekDay: 'Mon', date: 8, isCurrentDate: false},
-    {weekDay: 'Tue', date: 9, isCurrentDate: false},
-    {weekDay: 'Wed', date: 10, isCurrentDate: false},
-    {weekDay: 'Thu', date: 11, isCurrentDate: false},
-    {weekDay: 'Fri', date: 12, isCurrentDate: true},
-    {weekDay: 'Sat', date: 13, isCurrentDate: false},
-    {weekDay: 'Sun', date: 14, isCurrentDate: false},
-  ]);
+  const getTabs = (): CalendarTab[] => {
+    const today = new Date();
+    let startDate = new Date();
+    const weekDayIndex = today.getDay() - 1; //have to do it as getDay() returns index with Sun as first one
+    const date = today.getDate();
+    startDate.setDate(date - weekDayIndex);
+    let tabs: CalendarTab[] = [];
+
+    for (let i = 0; i < weekDays.length; i++) {
+      const weekDay = weekDays[i];
+      tabs.push({
+        weekDay,
+        date: startDate.getDate() + i,
+        isCurrentDate: i === weekDayIndex,
+      });
+    }
+    return tabs;
+  };
+
+  const [tabs, setTabs] = useState<CalendarTab[]>(getTabs());
   const handleTabClick = chosenDate => {
     setTabs(prevTabs => {
       const arrCopy = [...prevTabs];
@@ -43,14 +57,14 @@ const styles = StyleSheet.create({
   wrapper: {
     display: 'flex',
     flexDirection: 'row',
-    margin: 10,
+    margin: 5,
   },
   tab: {
     display: 'flex',
     flexDirection: 'column',
     borderRadius: 10,
     height: 60,
-    width: '13%',
+    width: '12%',
     margin: '1%',
     alignItems: 'center',
     justifyContent: 'space-between',

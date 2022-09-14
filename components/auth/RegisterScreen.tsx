@@ -8,7 +8,7 @@ import ButtonExt from '../shared/ButtonExt';
 import PickerExt from './shared/Picker/PickerExt';
 import TextInputExt from '../shared/TextInputExt';
 import ErrorMessage from './shared/ErrorMessage';
-import User from '../../lib/interfaces/user';
+import User from '../../lib/interfaces/User';
 import RegisterSchema from './schemas/RegisterSchema';
 import {AppContext} from '../../lib/contexts/AppContext';
 

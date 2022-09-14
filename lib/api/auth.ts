@@ -1,5 +1,5 @@
 import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
-import User from '../interfaces/user';
+import User from '../interfaces/User';
 
 export const signInEmailAndPassword = (
   email: string,
