@@ -87,14 +87,14 @@ const styles = StyleSheet.create({
   },
   background: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
   },
   logo: {
     width: 100,
     height: 100,
-    position: 'absolute',
-    top: 100,
+    marginTop: 100,
+    marginBottom: 60,
   },
   registerEntryBlock: {
     width: '100%',
