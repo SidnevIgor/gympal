@@ -24,6 +24,7 @@ const RegisterScreen = () => {
 
   const [age] = useState(getAgeVals());
   const [, setLoading] = useContext(AppContext);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSignUp = (user: User) => {
     setLoading(true);
@@ -35,6 +36,16 @@ const RegisterScreen = () => {
       .catch(err => {
         console.error(err);
         setLoading(false);
+        switch (err.code) {
+          case 'auth/email-already-in-use': {
+            setError('Email already in use');
+            break;
+          }
+          case 'auth/weak-password': {
+            setError('Password is too weak');
+            break;
+          }
+        }
       });
   };
 
@@ -85,6 +96,7 @@ const RegisterScreen = () => {
                 onBlur={() => setFieldTouched('password')}
               />
               {touched.password && <ErrorMessage error={errors.password} />}
+              {error && <ErrorMessage error={error} />}
               <View style={styles.registerBtn}>
                 <ButtonExt
                   btnClick={handleSubmit}
