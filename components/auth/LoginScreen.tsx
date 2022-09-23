@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {Formik} from 'formik';
 import {Image, StyleSheet, View} from 'react-native';
 import TextInputExt from '../shared/TextInputExt';
@@ -12,6 +12,7 @@ import LoginSchema from './schemas/LoginSchema';
 
 const LoginScreen = ({navigation}) => {
   const [, setLoading] = useContext(AppContext);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSignIn = (email: string, password: string) => {
     console.log('handleSignIn() called with ', email, password);
@@ -23,6 +24,20 @@ const LoginScreen = ({navigation}) => {
       })
       .catch(err => {
         setLoading(false);
+        switch (err.code) {
+          case 'auth/user-disabled': {
+            setError('Account is disabled');
+            break;
+          }
+          case 'auth/user-not-found': {
+            setError('No account with such email');
+            break;
+          }
+          default: {
+            setError('Wrong credentials');
+            break;
+          }
+        }
         console.log('Error happened: ', err);
       });
   };
@@ -61,6 +76,7 @@ const LoginScreen = ({navigation}) => {
                 onBlur={() => setFieldTouched('password')}
               />
               {touched.password && <ErrorMessage error={errors.password} />}
+              {error && <ErrorMessage error={error} />}
               <View style={styles.loginBtn}>
                 <ButtonExt
                   btnClick={handleSubmit}
