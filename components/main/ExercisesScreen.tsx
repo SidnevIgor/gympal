@@ -5,6 +5,7 @@ import ExerciseCard from './ExerciseCard';
 import DeleteComponent from './DeleteComponent';
 import colors from '../../lib/colors/colors';
 import Calendar from './Calendar';
+import ButtonExt from '../shared/ButtonExt';
 
 const initExercises = [
   {
@@ -60,6 +61,15 @@ const ExercisesScreen = () => {
         data={exercises}
         keyExtractor={exercise => exercise.id}
         renderItem={renderItem}></FlatList>
+      <View style={styles.createNewExerciseBtn}>
+        <ButtonExt
+          txt="Add New Activity"
+          bgColor={colors.secondary}
+          txtColor={colors.light}
+          hght={50}
+          fntSize={16}
+        />
+      </View>
     </View>
   );
 };
@@ -74,6 +84,12 @@ const styles = StyleSheet.create({
     padding: 20,
     paddingTop: 5,
     paddingBottom: 0,
+  },
+  createNewExerciseBtn: {
+    position: 'absolute',
+    bottom: 10,
+    width: '70%',
+    marginLeft: '15%',
   },
 });
 

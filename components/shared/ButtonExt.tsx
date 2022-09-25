@@ -13,6 +13,7 @@ const ButtonExt = (props: {
   txtColor?: string;
   wdth?: string;
   hght?: number;
+  fntSize?: number;
 }) => {
   return (
     <TouchableWithoutFeedback
@@ -30,12 +31,14 @@ const ButtonExt = (props: {
           borderRadius: 10,
           width: props.wdth || '100%',
           alignSelf: 'center',
-        }}>
+        }}
+        {...props}>
         <Text
           style={{
             alignSelf: 'center',
             fontWeight: '600',
             color: props.txtColor || 'black',
+            fontSize: props.fntSize,
           }}>
           {props.txt}
         </Text>

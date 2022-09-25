@@ -9,6 +9,7 @@ import {
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import auth from '@react-native-firebase/auth';
 import {AppContext} from '../../lib/contexts/AppContext';
+import colors from '../../lib/colors/colors';
 
 const AccountScreen = () => {
   const [, setLoading, appUser] = useContext(AppContext);
@@ -73,7 +74,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   accountData: {
-    backgroundColor: '#fff',
+    //backgroundColor: '#fff',
     flexDirection: 'row',
     height: 100,
     marginTop: 50,
@@ -93,7 +94,7 @@ const styles = StyleSheet.create({
   },
   accountName: {
     fontWeight: 'bold',
-    color: 'black',
+    color: colors.lightGray,
   },
   accountMail: {
     color: 'grey',
@@ -105,12 +106,12 @@ const styles = StyleSheet.create({
   },
   menuItems: {
     marginTop: 70,
-    backgroundColor: '#fff',
+    backgroundColor: colors.backgroundHighlight,
   },
   menuItem: {
     width: '100%',
     height: 80,
-    borderColor: 'lightgrey',
+    borderColor: colors.background,
     borderStyle: 'solid',
     borderWidth: 0.5,
     flexDirection: 'row',
@@ -125,7 +126,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   menuName: {
-    color: 'black',
+    color: colors.light,
     fontWeight: '500',
     fontSize: 18,
     marginLeft: 10,

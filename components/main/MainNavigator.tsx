@@ -31,7 +31,7 @@ const MainNavigation = () => {
           },
         },
         tabBarStyle: {
-          backgroundColor: '#12141C',
+          backgroundColor: colors.backgroundHighlight,
           borderTopColor: 'transparent',
           borderTopLeftRadius: 15,
           borderTopRightRadius: 15,
