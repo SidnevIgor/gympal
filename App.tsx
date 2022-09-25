@@ -8,24 +8,13 @@ import {View} from 'react-native';
 import colors from './lib/colors/colors';
 import LoadingAnimation from './components/shared/LoadingAnimation';
 import AppStore from './lib/contexts/AppContext';
-import {firebase} from '@react-native-firebase/database';
 
 const App = () => {
   const [initializing, setInitializing] = useState(true);
   const [user, setUser] = useState();
 
-  firebase
-    .app()
-    .database(
-      'https://gympal-581df-default-rtdb.europe-west1.firebasedatabase.app',
-    )
-    .ref('/users')
-    .once('value')
-    .then(snapshot => {
-      console.log('The value is read: ', snapshot.val());
-    });
-
   const onAuthStateChanged = user => {
+    console.log('State changed: ', user);
     setUser(user);
     if (initializing) setInitializing(false);
   };
@@ -38,7 +27,7 @@ const App = () => {
   if (initializing) return null;
 
   return (
-    <AppStore>
+    <AppStore user={user}>
       <View style={{backgroundColor: colors.background, flex: 1}}>
         <NavigationContainer theme={navigationTheme}>
           {!user && <AuthNavigation />}

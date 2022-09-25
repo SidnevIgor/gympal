@@ -11,19 +11,19 @@ import {AppContext} from '../../lib/contexts/AppContext';
 import LoginSchema from './schemas/LoginSchema';
 
 const LoginScreen = ({navigation}) => {
-  const [, setLoading] = useContext(AppContext);
+  const [, setAppLoading] = useContext(AppContext);
   const [error, setError] = useState<string | null>(null);
 
   const handleSignIn = (email: string, password: string) => {
     console.log('handleSignIn() called with ', email, password);
-    setLoading(true);
+    setAppLoading(true);
     signInEmailAndPassword(email, password)
       .then(val => {
-        setLoading(false);
+        setAppLoading(false);
         console.log('Sign In working - ', val);
       })
       .catch(err => {
-        setLoading(false);
+        setAppLoading(false);
         switch (err.code) {
           case 'auth/user-disabled': {
             setError('Account is disabled');

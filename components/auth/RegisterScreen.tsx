@@ -23,19 +23,19 @@ const RegisterScreen = () => {
   };
 
   const [age] = useState(getAgeVals());
-  const [, setLoading] = useContext(AppContext);
+  const [, setAppLoading] = useContext(AppContext);
   const [error, setError] = useState<string | null>(null);
 
   const handleSignUp = (user: User) => {
-    setLoading(true);
+    setAppLoading(true);
     signUpEmailAndPassword(user)
       .then(val => {
-        console.log('New user registered -', val);
-        setLoading(false);
+        console.log('New user registered -', val.user.uid);
+        setAppLoading(false);
       })
       .catch(err => {
         console.error(err);
-        setLoading(false);
+        setAppLoading(false);
         switch (err.code) {
           case 'auth/email-already-in-use': {
             setError('Email already in use');

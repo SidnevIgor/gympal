@@ -11,7 +11,7 @@ import auth from '@react-native-firebase/auth';
 import {AppContext} from '../../lib/contexts/AppContext';
 
 const AccountScreen = () => {
-  const [, setLoading] = useContext(AppContext);
+  const [, setLoading, appUser] = useContext(AppContext);
 
   const onLogoutClick = () => {
     setLoading(true);
@@ -36,8 +36,8 @@ const AccountScreen = () => {
             style={styles.image}></Image>
         </View>
         <View style={styles.accountMainData}>
-          <Text style={styles.accountName}>Mosh Hamedani</Text>
-          <Text style={styles.accountMail}>programmingwithmosh@gmail.com</Text>
+          <Text style={styles.accountName}>{appUser.displayName}</Text>
+          <Text style={styles.accountMail}>{appUser.email}</Text>
         </View>
       </View>
       <View style={styles.menuItems}>

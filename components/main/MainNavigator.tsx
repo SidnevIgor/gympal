@@ -1,15 +1,17 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import React from 'react';
+import React, {useContext} from 'react';
 import AccountScreen from './AccountScreen';
 import ExercisesScreen from './ExercisesScreen';
 import HomeScreen from './HomeScreen';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import colors from '../../lib/colors/colors';
-import {View} from 'react-native';
+import {AppContext} from '../../lib/contexts/AppContext';
 
 const Tab = createBottomTabNavigator();
 
 const MainNavigation = () => {
+  const [, , appUser] = useContext(AppContext);
+
   return (
     <Tab.Navigator
       initialRouteName="Home"
@@ -45,7 +47,7 @@ const MainNavigation = () => {
           tabBarIcon: ({color, size}) => (
             <Icon name="data-usage" size={size} color={color} />
           ),
-          headerTitle: 'Hello, Igor!',
+          headerTitle: `Hello, ${appUser.displayName || 'mate'}!`,
         }}
       />
       <Tab.Screen
