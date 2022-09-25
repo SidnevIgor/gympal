@@ -14,7 +14,6 @@ const App = () => {
   const [user, setUser] = useState();
 
   const onAuthStateChanged = user => {
-    console.log('State changed: ', user);
     setUser(user);
     if (initializing) setInitializing(false);
   };

@@ -3,23 +3,22 @@ import {StyleSheet, TouchableWithoutFeedback, View} from 'react-native';
 import colors from '../../lib/colors/colors';
 import CalendarTab from '../../lib/interfaces/CalendarTab';
 import TextExt from '../shared/TextExt';
+import moment from 'moment';
 
 const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
 const Calendar = () => {
   const getTabs = (): CalendarTab[] => {
     const today = new Date();
-    let startDate = new Date();
-    const weekDayIndex = today.getDay() - 1; //have to do it as getDay() returns index with Sun as first one
-    const date = today.getDate();
-    startDate.setDate(date - weekDayIndex);
+    const weekDayIndex = moment().isoWeekday() - 1;
+    console.log('The day index is ', weekDayIndex);
     let tabs: CalendarTab[] = [];
 
     for (let i = 0; i < weekDays.length; i++) {
       const weekDay = weekDays[i];
       tabs.push({
         weekDay,
-        date: startDate.getDate() + i,
+        date: moment().startOf('isoWeek').add(i, 'days').date(),
         isCurrentDate: i === weekDayIndex,
       });
     }
