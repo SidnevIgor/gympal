@@ -9,9 +9,7 @@ const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
 const Calendar = () => {
   const getTabs = (): CalendarTab[] => {
-    const today = new Date();
     const weekDayIndex = moment().isoWeekday() - 1;
-    console.log('The day index is ', weekDayIndex);
     let tabs: CalendarTab[] = [];
 
     for (let i = 0; i < weekDays.length; i++) {
