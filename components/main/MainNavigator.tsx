@@ -6,6 +6,7 @@ import HomeScreen from './home/HomeScreen';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import colors from '../../lib/colors/colors';
 import {AppContext} from '../../lib/contexts/AppContext';
+import ExerciseNavigation from './exercise/ExerciseNavigator';
 
 const Tab = createBottomTabNavigator();
 
@@ -52,7 +53,7 @@ const MainNavigation = () => {
       />
       <Tab.Screen
         name="Exercises"
-        component={ExercisesScreen}
+        component={ExerciseNavigation}
         options={{
           tabBarIcon: ({color, size}) => (
             <Icon name="directions-bike" size={size} color={color} />

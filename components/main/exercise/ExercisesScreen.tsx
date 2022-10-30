@@ -34,12 +34,16 @@ const initExercises = [
   },
 ];
 
-const ExercisesScreen = () => {
+const ExercisesScreen = ({navigation}) => {
   const [exercises, setExercises] = useState(initExercises);
 
   const handleDelete = exerciseId => {
     const newExercises = exercises.filter(ex => ex.id !== exerciseId);
     setExercises(newExercises);
+  };
+
+  const handleAddNewActivity = () => {
+    navigation.navigate('Create');
   };
 
   const renderItem = ({item}) => (
@@ -68,6 +72,7 @@ const ExercisesScreen = () => {
           txtColor={colors.light}
           hght={50}
           fntSize={16}
+          btnClick={handleAddNewActivity}
         />
       </View>
     </View>

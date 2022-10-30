@@ -1,9 +1,13 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import colors from '../../../lib/colors/colors';
 
-const ExerciseCreate = ({date: Date}) => {
-  return <View style={styles.wrapper}></View>;
+const ExerciseCreate = () => {
+  return (
+    <View style={styles.wrapper}>
+      <Text>Create exercise page</Text>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
