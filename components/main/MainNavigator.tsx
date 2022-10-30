@@ -47,7 +47,7 @@ const MainNavigation = () => {
           tabBarIcon: ({color, size}) => (
             <Icon name="data-usage" size={size} color={color} />
           ),
-          headerTitle: `Hello, ${appUser.displayName || 'mate'}!`,
+          headerTitle: `Hello, ${appUser?.displayName || 'mate'}!`,
         }}
       />
       <Tab.Screen

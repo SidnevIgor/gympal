@@ -36,10 +36,12 @@ const AccountScreen = () => {
             source={require('../../assets/logo-red.png')}
             style={styles.image}></Image>
         </View>
-        <View style={styles.accountMainData}>
-          <Text style={styles.accountName}>{appUser.displayName}</Text>
-          <Text style={styles.accountMail}>{appUser.email}</Text>
-        </View>
+        {appUser && (
+          <View style={styles.accountMainData}>
+            <Text style={styles.accountName}>{appUser.displayName}</Text>
+            <Text style={styles.accountMail}>{appUser.email}</Text>
+          </View>
+        )}
       </View>
       <View style={styles.menuItems}>
         <View style={styles.menuItem}>
