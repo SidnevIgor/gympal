@@ -22,7 +22,7 @@ const ExerciseCard = (props: {
         <TouchableWithoutFeedback onPress={props.onPress}>
           <View style={styles.card}>
             <Image
-              source={require('../../assets/logo-red.png')}
+              source={require('../../../assets/logo-red.png')}
               style={styles.image}></Image>
             <View style={styles.detailsView}>
               <Text style={styles.title}>{props.name}</Text>

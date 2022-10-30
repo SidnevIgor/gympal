@@ -8,8 +8,8 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import auth from '@react-native-firebase/auth';
-import {AppContext} from '../../lib/contexts/AppContext';
-import colors from '../../lib/colors/colors';
+import {AppContext} from '../../../lib/contexts/AppContext';
+import colors from '../../../lib/colors/colors';
 
 const AccountScreen = () => {
   const [, setLoading, appUser] = useContext(AppContext);
@@ -33,7 +33,7 @@ const AccountScreen = () => {
       <View style={styles.accountData}>
         <View style={styles.accountImgWrapper}>
           <Image
-            source={require('../../assets/logo-red.png')}
+            source={require('../../../assets/logo-red.png')}
             style={styles.image}></Image>
         </View>
         {appUser && (

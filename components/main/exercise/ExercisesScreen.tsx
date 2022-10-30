@@ -3,9 +3,9 @@ import {View, StyleSheet, FlatList} from 'react-native';
 
 import ExerciseCard from './ExerciseCard';
 import DeleteComponent from './DeleteComponent';
-import colors from '../../lib/colors/colors';
+import colors from '../../../lib/colors/colors';
 import Calendar from './Calendar';
-import ButtonExt from '../shared/ButtonExt';
+import ButtonExt from '../../shared/ButtonExt';
 
 const initExercises = [
   {

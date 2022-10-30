@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {StyleSheet, TouchableWithoutFeedback, View} from 'react-native';
-import colors from '../../lib/colors/colors';
-import CalendarTab from '../../lib/interfaces/CalendarTab';
-import TextExt from '../shared/TextExt';
+import colors from '../../../lib/colors/colors';
+import CalendarTab from '../../../lib/interfaces/CalendarTab';
+import TextExt from '../../shared/TextExt';
 import moment from 'moment';
 
 const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];

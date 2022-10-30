@@ -1,8 +1,8 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React, {useContext} from 'react';
-import AccountScreen from './AccountScreen';
-import ExercisesScreen from './ExercisesScreen';
-import HomeScreen from './HomeScreen';
+import AccountScreen from './account/AccountScreen';
+import ExercisesScreen from './exercise/ExercisesScreen';
+import HomeScreen from './home/HomeScreen';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import colors from '../../lib/colors/colors';
 import {AppContext} from '../../lib/contexts/AppContext';
